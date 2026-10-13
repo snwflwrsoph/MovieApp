@@ -1,7 +1,9 @@
 package com.sophia.movieapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
+import android.widget.Button
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +13,11 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 
 class Password : AppCompatActivity() {
+
+    lateinit var cancel_btn : Button
+
+    lateinit var link_btn : Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -20,6 +27,21 @@ class Password : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        cancel_btn = findViewById<Button>(R.id.cancel_btn)
+
+        link_btn = findViewById<Button>(R.id.recover_btn)
+
+        cancel_btn.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
+        link_btn.setOnClickListener {
+            validate()
+        }
+
+
     }
 
     private fun validate(){

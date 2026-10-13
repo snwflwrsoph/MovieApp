@@ -4,16 +4,20 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.textfield.TextInputEditText
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var login_btn : Button
     lateinit var signin_btn : Button
+
+    lateinit var frgtPass_btn : TextView
     lateinit var email_field: EditText
     lateinit var password_field: EditText
 
@@ -29,6 +33,7 @@ class MainActivity : AppCompatActivity() {
 
         login_btn = findViewById<Button>(R.id.login_btn)
         signin_btn = findViewById<Button>(R.id.signin_btn)
+        frgtPass_btn = findViewById<TextView>(R.id.frgtpass_btn)
         email_field = findViewById<EditText>(R.id.email_field)
         password_field = findViewById<EditText>(R.id.password_field)
 
@@ -46,6 +51,11 @@ class MainActivity : AppCompatActivity() {
             }else{
                 Toast.makeText(this, "Incorrect credentials", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        frgtPass_btn.setOnClickListener {
+            val intent = Intent(this, Password::class.java)
+            startActivity(intent)
         }
     }
 }

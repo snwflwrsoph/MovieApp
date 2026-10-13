@@ -1,8 +1,10 @@
 package com.sophia.movieapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +17,9 @@ import java.util.Calendar
 import java.util.Locale
 
 class RegistroActivity : AppCompatActivity() {
+
+    lateinit var login_btn : TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -32,6 +37,13 @@ class RegistroActivity : AppCompatActivity() {
         val signUpBtn = findViewById<Button>(R.id.signin_btn)
 
         signUpBtn.setOnClickListener { validateSignUp() }
+
+        login_btn = findViewById<TextView>(R.id.login_text)
+
+        login_btn.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
 
 
     }
